@@ -7,7 +7,7 @@ $ldapPort = 389;
 $ldapAdminUser = 'DOMÍNIO\USUARIOADMINISTRADOR';
 $ldapAdminPass = 'SENHADOUSUARIO';
 
-// Usuário e senha fornecidos pelo usuário
+// Usuário e senha fornecidos na tela de login
 $userLogin = $_POST['usuario'];
 $userPassword = $_POST['senha'];
 
@@ -51,7 +51,7 @@ if (ldap_bind($ldapConn, $ldapAdminUser, $ldapAdminPass)) {
             
             // Verifica se o usuário pertence a um grupo válido
             if (!empty($userGroup)) {
-                // Armazena os dados do usuário em variáveis de sessão
+                // Armazena os dados colhidos do usuário em variáveis de sessão
                 $_SESSION['autenticado'] = true;
                 $_SESSION['usuario'] = $userLogin;
                 $_SESSION['grupo'] = $userGroup;
