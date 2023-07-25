@@ -1,6 +1,4 @@
 <?php
-
-include "../model/functions/Logger.php";
 // Informações de conexão ao AD
 $ldapServer = 'ldap://rgcontadores.local';
 $ldapPort = 389;
