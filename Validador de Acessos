@@ -1,0 +1,29 @@
+Função validadora para a sua página:
+
+<?php
+
+function validarAcessoModulo()
+{
+    // Certifique-se de que a sessão foi iniciada
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    // Verifica se o usuário está autenticado
+    if (isset($_SESSION['autenticado']) && $_SESSION['autenticado'] === true) {
+        // Verifica se o usuário pertence ao grupo "TI"
+        if (isset($_SESSION['grupo']) && $_SESSION['grupo'] === 'TI') {
+            // Usuário autenticado e pertence ao grupo "TI", pode acessar o módulo
+            return true;
+        } else {
+            // Usuário não pertence ao grupo "TI", redireciona para a página inicial de login
+            header('Location: ../');
+            exit();
+        }
+    } else {
+        // Usuário não está autenticado, redireciona para a página inicial de login
+        header('Location: ../');
+        exit();
+    }
+}
+?>
